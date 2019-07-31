@@ -76,9 +76,20 @@
         </div>
     </nav>
 
-    <main class="py-4">
-        @yield('content')
-    </main>
+    <div class="container5">
+        <div class="row">
+            <div class="col-9">
+                @yield('content')
+            </div>
+            <div class="col">
+                @foreach($catalogs as $obj)
+                    <a href="#" class="btn btn-link btn-block">
+                    {{$obj->name}}
+                    </a>
+                @endforeach
+            </div>
+        </div>
+    </div>
 </div>
 <script src={{asset('js/jquery-3.4.1.min.js')}}></script>
 <script src={{asset('bootstrap-4.3.1-dist/js/bootstrap.min.js')}}></script>
