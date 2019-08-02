@@ -9,8 +9,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -34,9 +32,6 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
-
-                </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -51,6 +46,8 @@
                             </li>
                         @endif
                     @else
+
+
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -63,11 +60,13 @@
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                       style="display: none;">
                                     @csrf
                                 </form>
+                                <a class="dropdown-item" href="/home">
+                                    Домашняя
+                                </a>
                             </div>
                         </li>
                     @endguest
@@ -83,8 +82,8 @@
             </div>
             <div class="col">
                 @foreach($catalogs as $obj)
-                    <a href="#" class="btn btn-link btn-block">
-                    {{$obj->name}}
+                    <a href="{{asset('/catalog/'.$obj->id)}}" class="btn btn-outline-info btn-block">
+                     {{$obj->name}}
                     </a>
                 @endforeach
             </div>
