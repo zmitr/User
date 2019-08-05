@@ -7,16 +7,16 @@
 @section('content')
 
         <div class="row justify-content-center">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">Blog to log</div>
-
-                    <div class="card-body">
-
-
-                        Hello!! Welcom fo ouer site!!!
+            <div class="col-11">
+                @foreach($posts as $post)
+                    <div class="card">
+                        <div class="card-header">{{$post->title}}</div>
+                            Категория: {{$post->catalogs->name}}
+                        <div class="card-body">
+                            {!!$post->body!!}
+                        </div>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
 

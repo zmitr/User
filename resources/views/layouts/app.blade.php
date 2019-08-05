@@ -16,12 +16,15 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/my.css') }}" rel="stylesheet">
+
 </head>
 <body>
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
+                <img src="/storage/users/default.png">
                 {{ config('app.name', 'Laravel') }}
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -77,7 +80,7 @@
 
     <div class="container5">
         <div class="row">
-            <div class="col-9">
+            <div class="col-8">
                 @yield('content')
             </div>
             <div class="col">

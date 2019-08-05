@@ -12,7 +12,7 @@
 */
 
 
-Route::get('/','BaseController@getIndex');
+Route::get('/','PostController@getPosts');
 
 Auth::routes();
 
