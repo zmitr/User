@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Http\Request;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -21,8 +23,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function getPosts()
     {
-        return view('home');
+        $posts = Post::where('author_id',Auth::user()->id)->orderBy('id','DESC')->paginate(15);
+        return view('/home',compact('posts'));
     }
 }

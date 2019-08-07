@@ -6,8 +6,8 @@
 @endsection
 @section('content')
 
-        <div class="row justify-content-center">
-            <div class="col-11">
+
+
                 @foreach($posts as $post)
                     <div class="card">
                         <div class="card-header">{{$post->title}}</div>
@@ -17,7 +17,7 @@
                         </div>
                     </div>
                 @endforeach
-            </div>
-        </div>
+
+
 
 @endsection

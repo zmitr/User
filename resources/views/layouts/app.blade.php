@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>tl{{ config('app.name', 'Laravel') }}</title>
 
 
     <!-- Fonts -->
@@ -24,8 +24,7 @@
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="/storage/users/default.png">
-                {{ config('app.name', 'Laravel') }}
+                <H2> <img src={{asset("picture/logo-oeil-small.png")}}> {{ config('app.name', 'Laravel') }} </H2>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -79,18 +78,19 @@
     </nav>
 
     <div class="container5">
-        <div class="row">
-            <div class="col-8">
+        <div class="row row justify-content-md-center">
+            <div class="col-md-8 offset-1">
                 @yield('content')
             </div>
-            <div class="col">
+
+            <div class="col-2">
                 @foreach($catalogs as $obj)
                     <a href="{{asset('/catalog/'.$obj->id)}}" class="btn btn-outline-info btn-block">
                      {{$obj->name}}
                     </a>
                 @endforeach
             </div>
-        </div>
+        </div>>
     </div>
 </div>
 <script src={{asset('js/jquery-3.4.1.min.js')}}></script>
