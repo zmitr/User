@@ -11,7 +11,7 @@
                 @foreach($posts as $post)
                     <div class="card">
                         <div class="card-header">{{$post->title}}</div>
-                            Категория: {{$post->catalogs->name}}
+                        <h5 align="right">{{$post->catalogs->name}}</h5>
                         <div class="card-body">
                             {!!$post->body!!}
                         </div>

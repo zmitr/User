@@ -6,7 +6,7 @@
 
             <div class="card">
                 <div class="card-header">{{$post->title}}</div>
-                <h5 align="right">Категория: {{$post->catalogs->name}}</h5>
+                <h5 align="right">{{$post->catalogs->name}}</h5>
                 <div class="card-body">
                     {!!$post->body!!}
 

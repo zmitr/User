@@ -10,7 +10,7 @@ use App\Category;
     {
         public function compose(View $view)
         {
-            $catalogs = Category::orderBy('id','DESC')->limit(5)->get();
+            $catalogs = Category::orderBy('id','ASC')->limit(10)->get();
             $view->with('catalogs', $catalogs);
 
         }
