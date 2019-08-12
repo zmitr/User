@@ -22,3 +22,4 @@ Route::get('/home/edit/{id}','HomeController@getEdit');
 
 Route::get('catalog/{id}','CatalogController@getIndex');
 
+

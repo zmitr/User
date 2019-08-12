@@ -1,5 +1,14 @@
 @extends('layouts.app')
 
+
+@section ('scripts')
+@parent
+<script src={{asset('js/formEnable.js')}}>
+
+</script>
+@endsection
+
+
 @section('content')
     <div class="container">
         <div class="card">
@@ -28,13 +37,13 @@
                                 </div>
 
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="1" checked>
+                                    <input class="form-check-input all" type="radio" name="exampleRadios" id="exampleRadios1" value="1" checked>
                                     <label class="form-check-label" for="exampleRadios1">
                                         Всем пользователям
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="2">
+                                    <input class="form-check-input all" type="radio" name="exampleRadios" id="exampleRadios2" value="2">
                                     <label class="form-check-label" for="exampleRadios2">
                                         Зарегестрированным пользователям
                                     </label>
@@ -48,12 +57,7 @@
 
 
                                     <select multiple class="form-control" id="exampleFormControlSelect2" disabled>
-                                        <option>Всем</option>
-                                        <option>Только зарегестрировванным</option>
-                                        <option>dima</option>
-                                        <option>pavel</option>
-                                        <option>anton</option>
-                                        <option>denis</option>
+                                       @include('templates.users')
                                     </select>
 
                                 <a href="#edit_post" class="btn btn-primary">Сохранить запись</a>
