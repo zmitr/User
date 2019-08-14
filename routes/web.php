@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@getPosts')->name('home');
 Route::get('/home/edit/{id}','HomeController@getEdit');
+Route::post('/home/edit/{id}','HomeController@postEdit');
+
 
 Route::get('catalog/{id}','CatalogController@getIndex');
 

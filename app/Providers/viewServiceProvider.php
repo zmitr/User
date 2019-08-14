@@ -24,7 +24,7 @@ class viewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view::composer('layouts.app','App\Providers\ViewComposers\ArtComposer');
+        view::composer(['layouts.app','post_edit'],'App\Providers\ViewComposers\ArtComposer');
         view::composer(['templates.users'],'App\providers\ViewComposers\UserComposer');
     }
 }

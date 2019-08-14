@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
-use Illuminate\Http\Request;
+use App\Http\Requests\postRequest;
 use Auth;
 
 class HomeController extends Controller
@@ -42,7 +42,13 @@ class HomeController extends Controller
 
     }
 
-    public function postEdit() {
+    public function postEdit(postRequest $r, $id = null) {
+        $obj = Post::find($id);
+        $obj->title = $r['title'];
+        $obj->body = $r['body'];
+        $obj->category_id = $r['category_id'];
 
+        $obj->save();
+        return redirect()->back();
     }
 }

@@ -3,8 +3,14 @@
 
 @section ('scripts')
 @parent
-<script src={{asset('js/formEnable.js')}}>
-
+<script src="https://cdn.ckeditor.com/ckeditor5/12.3.1/classic/ckeditor.js"></script>
+<script src={{asset('js/formEnable.js')}}> </script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
 </script>
 @endsection
 
@@ -17,7 +23,7 @@
             </div>
 
             <div class="card-body">
-                @if (session('status'))
+                @if(session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}
                     </div>
@@ -27,14 +33,37 @@
                     <!-- Nav tabs -->
                     <div class="tab-content my_content">
 
-                            <form action="#">
-                                <p></p>
-                                <input type="text" class="form-control" placeholder="Введите ваш заголовок" aria-label="title" value = "{{$obj->title}}" aria-describedby="basic-addon1">
-                                <p></p>
-                                <div class="form-group">
-                                    <label for="exampleFormControlTextarea1">Введите текс сообщения</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"> {{$obj->body}}</textarea>
+                            <form action="{{asset('/home/edit/'.$obj->id)}}" method="POST">
+                                {!! csrf_field() !!}
+                                @if($errors->has('title'))
+                                    <div>
+                                        <b class='errors'>
+                                        {{$errors->first('title')}}
+                                        </b>
+                                    </div>
+                                @endif
+                                `<input type="text" class="form-control" placeholder="Введите ваш заголовок" aria-label="title" name="title" value = "{{$obj->title}}" aria-describedby="basic-addon1">
+                                {!! csrf_field() !!}
+                                @if($errors->has('category_id'))
+                                    <div>
+                                        <b class='errors'>
+                                            {{$errors->first('category_id')}}
+                                        </b>
+                                    </div>
+                                @endif
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Выберете категорию</label>
+                                    </div>
+                                    <select class="custom-select" id="inputGroupSelect01" name="ctegory_id" value="{{$obj->category_id}}">
+                                        @foreach($catalogs as $cat)
+                                            <option value={{$cat->id}} {{($obj->category_id==$cat->id)?'selected':''}}>{{$cat->name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
+                                <textarea class="form-control" name="content" id="editor" rows="8" name="body">
+                                   {{$obj->body}}
+                                </textarea>
 
                                 <div class="form-check">
                                     <input class="form-check-input all" type="radio" name="exampleRadios" id="exampleRadios1" value="1" checked>
@@ -60,7 +89,8 @@
                                        @include('templates.users')
                                     </select>
 
-                                <a href="#edit_post" class="btn btn-primary">Сохранить запись</a>
+                                <button type="submit" class="btn btn-primary">Сохранить запись</button>
+
                             </form>
 
                     </div>
