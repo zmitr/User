@@ -45,7 +45,7 @@
                         </div>
 
                         <div role="tabpanel" class="tab-pane" id="edit_post">
-                            <form action="#">
+                            <form action="action="{{asset('/home/create/')}}" method="POST"">
                                 <p></p>
                                 <input type="text" class="form-control" placeholder="Введите ваш заголовок" aria-label="title" aria-describedby="basic-addon1">
                                 <p></p>

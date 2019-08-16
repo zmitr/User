@@ -53,41 +53,51 @@
                                 @endif
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect01">Выберете категорию</label>
+                                        <label class="input-group-text" for="SelectCategory">Выберете категорию</label>
                                     </div>
-                                    <select class="custom-select" id="inputGroupSelect01" name="ctegory_id" value="{{$obj->category_id}}">
+                                    <select class="custom-select" id="SelectCategory" name="category_id" value="{{$obj->category_id}}">
                                         @foreach($catalogs as $cat)
                                             <option value={{$cat->id}} {{($obj->category_id==$cat->id)?'selected':''}}>{{$cat->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                                <textarea class="form-control" name="content" id="editor" rows="8" name="body">
+                                @if($errors->has('body'))
+                                    <div>
+                                        <b class='errors'>
+                                            {{$errors->first('body')}}
+                                        </b>
+                                    </div>
+                                @endif
+                                <textarea class="form-control" id="editor" rows="8" name="body">
                                    {{$obj->body}}
                                 </textarea>
-
+                                <input type="text" class="form-control" placeholder="Введите краткое содержание" name="titlrexcerpt" value = "Введите краткое содержание поста" aria-describedby="basic-addon1">
+                                <textarea class="form-control" id="simpletext" rows="3" name="excerpt">
+                                   {{$obj->excerpt}}
+                                </textarea>
                                 <div class="form-check">
-                                    <input class="form-check-input all" type="radio" name="exampleRadios" id="exampleRadios1" value="1" checked>
+                                    <input class="form-check-input all" type="radio" name="UserViewType" id="exampleRadios1" value="1" checked>
                                     <label class="form-check-label" for="exampleRadios1">
                                         Всем пользователям
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input all" type="radio" name="exampleRadios" id="exampleRadios2" value="2">
+                                    <input class="form-check-input all" type="radio" name="UserViewType" id="exampleRadios2" value="2">
                                     <label class="form-check-label" for="exampleRadios2">
                                         Зарегестрированным пользователям
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="3">
+                                    <input class="form-check-input" type="radio" name="UserViewType" id="exampleRadios3" value="3">
                                     <label class="form-check-label" for="exampleRadios3">
                                         Конкретным пользователям из списка
                                     </label>
                                 </div>
+                                <select multiple class="form-control" id="exampleFormControlSelect2" disabled>
+                                    @include('templates.users')
+                                </select>
 
 
-                                    <select multiple class="form-control" id="exampleFormControlSelect2" disabled>
-                                       @include('templates.users')
-                                    </select>
 
                                 <button type="submit" class="btn btn-primary">Сохранить запись</button>
 
