@@ -20,9 +20,7 @@
                         <li role="presentation" class="active mat"><a href="#my_post" aria-controls="my_post"
                                                                       class="btn btn-outline-primary" role="tab"
                                                                       data-toggle="tab">Мои записи</a></li>
-                        <li role="presentation" class="mat"><a href="#edit_post" aria-controls="edit_post"
-                                                               class="btn btn-outline-primary" role="tab"
-                                                               data-toggle="tab">Создать запись</a></li>
+                        <li> <a href="{{asset('/home/post_create/')}}" class="btn btn-primary">Создать записи</a></li>
 
                     </ul>
                     <div class="tab-content my_content">

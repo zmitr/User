@@ -35,13 +35,13 @@ class HomeController extends Controller
 
     public function getEdit($id = null){
         $obj = Post::find($id);
-        if ($obj->user_id == Auth::user()->id){
+
             return view('post_edit',compact('obj'));
-        }
+
 
     }
 
-    public function postAdd() {
+    public function postAdd($data) {
 
     }
 
@@ -53,13 +53,13 @@ class HomeController extends Controller
     public function postEdit(postRequest $r, $id = null) {
         //dd($r->all());
         $obj = Post::find($id);
-        if ($obj->user_id == Auth::user()->id) {
+
             $obj->title = $r['title'];
             $obj->body = $r['body'];
             $obj->category_id = $r['category_id'];
             $obj->author_id = Auth::user()->id;
             $obj->save();
-        }
+
         //dd($obj);
         return redirect()->back();
     }
