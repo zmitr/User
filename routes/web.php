@@ -20,8 +20,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@getPosts')->name('home');
 Route::get('/home/edit/{id}','HomeController@getEdit');
 Route::post('/home/edit/{id}','HomeController@postEdit');
+Route::get('/home/post_create','HomeController@postAdd');
 
 
 Route::get('catalog/{id}','CatalogController@getIndex');
+
 
 

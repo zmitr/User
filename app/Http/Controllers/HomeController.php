@@ -41,8 +41,8 @@ class HomeController extends Controller
 
     }
 
-    public function postAdd($data) {
-
+    public function postAdd() {
+        return redirect()->back();
     }
 
     /**

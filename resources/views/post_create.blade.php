@@ -1,10 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: teacher
- * Date: 19.08.2019
- * Time: 19:44
- */
 @extends('layouts.app')
 
 
@@ -40,47 +33,26 @@
                     <!-- Nav tabs -->
                     <div class="tab-content my_content">
 
-                        <form action="{{asset('/home/edit/'.$obj->id)}}" method="POST">
+                        <form action="#" method="POST">
                             {!! csrf_field() !!}
-                            @if($errors->has('title'))
-                                <div>
-                                    <b class='errors'>
-                                        {{$errors->first('title')}}
-                                    </b>
-                                </div>
-                            @endif
-                            `<input type="text" class="form-control" placeholder="Введите ваш заголовок" aria-label="title" name="title" value = "{{$obj->title}}" aria-describedby="basic-addon1">
-                            {!! csrf_field() !!}
-                            @if($errors->has('category_id'))
-                                <div>
-                                    <b class='errors'>
-                                        {{$errors->first('category_id')}}
-                                    </b>
-                                </div>
-                            @endif
+
+                            <input type="text" class="form-control" placeholder="Введите ваш заголовок" aria-label="title" name="title" value = "" aria-describedby="basic-addon1">
+
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <label class="input-group-text" for="SelectCategory">Выберете категорию</label>
                                 </div>
-                                <select class="custom-select" id="SelectCategory" name="category_id" value="{{$obj->category_id}}">
-                                    @foreach($catalogs as $cat)
-                                        <option value={{$cat->id}} {{($obj->category_id==$cat->id)?'selected':''}}>{{$cat->name}}</option>
-                                    @endforeach
+                                <select class="custom-select" id="SelectCategory" name="category_id" value="">
+
                                 </select>
                             </div>
-                            @if($errors->has('body'))
-                                <div>
-                                    <b class='errors'>
-                                        {{$errors->first('body')}}
-                                    </b>
-                                </div>
-                            @endif
+
                             <textarea class="form-control" id="editor" rows="8" name="body">
-                                   {{$obj->body}}
+
                                 </textarea>
                             <input type="text" class="form-control" placeholder="Введите краткое содержание" name="titlrexcerpt" value = "Введите краткое содержание поста" aria-describedby="basic-addon1">
                             <textarea class="form-control" id="simpletext" rows="3" name="excerpt">
-                                   {{$obj->excerpt}}
+
                                 </textarea>
                             <div class="form-check">
                                 <input class="form-check-input all" type="radio" name="UserViewType" id="exampleRadios1" value="1" checked>
